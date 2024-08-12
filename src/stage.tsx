@@ -5,6 +5,10 @@ export class Stage {
 		GameManager.allStages.push(this);
 	}
 
+	triggerProceed() {
+    GameManager.getInstance().passStage();
+  }
+
 	getComponent() {
 		return (
 			<p>Uninitilized Stage</p>
@@ -14,12 +18,16 @@ export class Stage {
 
 
 export class ObjectiveStage extends Stage {
-	onSubmit() {
+  getStageNumber() {
+    return GameManager.getInstance().currentObjective.toString().padStart(2, "0");
+  }
+	
+	triggerProceed() {
     GameManager.getInstance().currentObjective++;
     GameManager.getInstance().passStage();
   }
 }
 
 export class RulesetStage extends Stage {
-	
+
 }

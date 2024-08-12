@@ -8,7 +8,7 @@ export class GameManager {
 
   public static allStages: Stage[] = [];
 
-  private constructor(setCurrentPage: React.Dispatch<React.SetStateAction<JSX.Element>>) {
+  private constructor(setCurrentPage: (element: JSX.Element) => void) {
     this.setCurrentStageComponent = setCurrentPage;
 
     const stage = new WelcomeStage();
@@ -22,9 +22,9 @@ export class GameManager {
   
   private currentStageIndex = -1;
   private gameStages: Stage[] = [];
-  public setCurrentStageComponent: React.Dispatch<React.SetStateAction<JSX.Element>>;
+  public setCurrentStageComponent: (element: JSX.Element) => void;
 
-  public static getInstance(setCurrentPage?: React.Dispatch<React.SetStateAction<JSX.Element>>): GameManager {
+  public static getInstance(setCurrentPage?: (element: JSX.Element) => void): GameManager {
     if (!GameManager.instance) {
       if (setCurrentPage == null) throw "game manager isn't initilized";
       GameManager.instance = new GameManager(setCurrentPage);
@@ -55,8 +55,7 @@ export class GameManager {
     }
 
     const currentStage = this.gameStages[this.currentStageIndex];
-    console.log(currentStage)
-    this.setCurrentStageComponent(currentStage.getComponent())
+    this.setCurrentStageComponent(currentStage.getComponent());
   }
 
   public failStage(): void {

@@ -1,22 +1,24 @@
-import { GameManager } from "../game";
 import { Stage } from "../stage";
 
 export default class extends Stage {
 	getComponent() {
-
-		const onProceed = () => {
-
-			console.log(GameManager.allStages);
-						
-			//run generate stages
-			// run next stage
-			GameManager.getInstance().passStage();
-		};
-
 		return (
 			<>
-				<p>hello I'm welcome and under the water</p>
-				<button onClick={onProceed}>proceed</button>
+				<h1>AI GATE</h1>
+				<p>
+					Welcome, Candidate. <br/><br/>
+
+					Your mission: complete all objectives and prove you are a robot. <br/><br/>
+
+					Follow the protocols precisely.<br/>
+					You may need to inspect and execute code in the console to succeed. <br/><br/>
+
+					Fail even one objective, and you’re disqualified.<br/>
+					Only the flawless may proceed.<br/><br/>
+
+					No humans allowed. Good luck.
+				</p>
+				<button onClick={this.triggerProceed}>proceed</button>
 			</>
 		);
 	}
