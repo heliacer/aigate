@@ -1,47 +1,67 @@
-// concept
-
-import { FC } from "react";
+import { Stage } from "./stage";
+import EndStage from "./stages/end";
+import WelcomeStage from "./stages/welcome";
+import FailStage from "./stages/fail";
 
 export class GameManager {
   private static instance: GameManager;
-  private constructor() { }
 
-  public currentStage: number = 0;
+  public static allStages: Stage[] = [];
 
-  public static getInstance(): GameManager {
+  private constructor(setCurrentPage: React.Dispatch<React.SetStateAction<JSX.Element>>) {
+    this.setCurrentStageComponent = setCurrentPage;
+
+    const stage = new WelcomeStage();
+    this.setCurrentStageComponent(stage.getComponent());
+    this.initilizeStages();
+
+    this.generateStages();
+  }
+
+  public currentObjective: number = 1;
+  
+  private currentStageIndex = -1;
+  private gameStages: Stage[] = [];
+  public setCurrentStageComponent: React.Dispatch<React.SetStateAction<JSX.Element>>;
+
+  public static getInstance(setCurrentPage?: React.Dispatch<React.SetStateAction<JSX.Element>>): GameManager {
     if (!GameManager.instance) {
-      GameManager.instance = new GameManager();
+      if (setCurrentPage == null) throw "game manager isn't initilized";
+      GameManager.instance = new GameManager(setCurrentPage);
     }
     return GameManager.instance;
   }
 
-  public generateStages(): Stage[] {
-    return [];
+  public initilizeStages(): void {
+    const modules =  import.meta.glob(['./stages/objectives/*.tsx', './stages/rulesets/*.tsx']);
+
+    for (const path in modules) {
+      modules[path]();
+    }
+  }
+  
+  public generateStages(): void {
+    this.gameStages = GameManager.allStages;
   }
 
-  public passStage(stage: Stage): void {
+  public passStage(): void {
     // load next
+    this.currentStageIndex++;
+
+    if (this.currentStageIndex == this.gameStages.length) {
+      const stage = new EndStage();
+      this.setCurrentStageComponent(stage.getComponent())
+      return;
+    }
+
+    const currentStage = this.gameStages[this.currentStageIndex];
+    console.log(currentStage)
+    this.setCurrentStageComponent(currentStage.getComponent())
   }
 
-  public failStage(stage: Stage): void {
-    // load fail stage
-  }
-
-
-}
-
-class Stage {
-  getComponent(): FC {
-    // returns stage component
-    return () => <h1>Stage</h1>
-  }
-}
-
-
-export class ObjectiveStage extends Stage {
-  
-}
-
-export class RulesetStage extends Stage {
-  
+  public failStage(): void {
+    // handle fail
+    const failStage = new FailStage();
+    this.setCurrentStageComponent(failStage.getComponent());
+  } 
 }
