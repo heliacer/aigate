@@ -1,4 +1,4 @@
-import { RulesetStage } from "../../stage";
+import { RulesetStage } from "../../stage"
 
 (new (class extends RulesetStage {
   getComponent() {
@@ -8,6 +8,6 @@ import { RulesetStage } from "../../stage";
         <p>bla bla</p>
         <button className="aquamarine" onClick={this.triggerProceed}>proceed</button>
       </>
-    );
+    )
   }
-})()).init();
+})()).init()

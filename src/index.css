@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Monomaniac+One&family=Nova+Mono&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root{
   --primary-dark: #1A1A1A;
@@ -10,6 +13,7 @@
   --cyclamen: 255, 114, 159;
   --aquamarine: 44, 246, 179;
   user-select: none;
+  color-scheme: dark;
 
   background-color: var(--primary-dark);
 }
@@ -72,4 +76,19 @@ button.cyclamen{
   color: rgb(var(--cyclamen));
   border: 1px solid rgb(var(--cyclamen));
   background-color: rgba(var(--cyclamen), 0.2);
+}
+
+img{
+  margin: 20px 0;
+}
+
+input[type="number"]{
+  font-family: 'Nova Mono';
+  font-size: 1.2em;
+  padding-left: 5px;
+
+  color: var(--primary-light);
+  border: 1px solid var(--primary-light);
+  border-radius: 2px;
+  background-color: var(--primary-dark);
 }

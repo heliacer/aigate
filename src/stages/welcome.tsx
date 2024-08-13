@@ -1,4 +1,4 @@
-import { Stage } from "../stage";
+import { Stage } from "../stage"
 
 export default class extends Stage {
 	getComponent() {
@@ -10,7 +10,7 @@ export default class extends Stage {
 
 					Your mission: complete all objectives and prove you are a robot. <br/><br/>
 
-					Follow the protocols precisely.<br/>
+					Follow the rulesets precisely.<br/>
 					You may need to inspect and execute code in the console to succeed. <br/><br/>
 
 					Fail even one objective, and you’re disqualified.<br/>
@@ -20,7 +20,7 @@ export default class extends Stage {
 				</p>
 				<button onClick={this.triggerProceed}>proceed</button>
 			</>
-		);
+		)
 	}
-};
+}
 
