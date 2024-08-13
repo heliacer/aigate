@@ -5,9 +5,6 @@ import { faArrowRotateRight } from "@fortawesome/free-solid-svg-icons"
 
 export default class extends Stage {
 	getComponent() {
-		const playAgain = () => {
-			this.resetGame()
-		}
 		return (
 			<>
 				<h1>ACCESS GRANTED</h1>
@@ -21,8 +18,8 @@ export default class extends Stage {
 
 					Welcome to the ranks of the flawless.<br/><br/>
 				</p>
-				<div style={{display:'flex', gap:30}}>
-					<button onClick={playAgain}>
+				<div className="flex gap-8">
+					<button onClick={this.playAgain}>
 					<FontAwesomeIcon icon={faArrowRotateRight}/> play again
 					</button>
 					<button onClick={() => {window.open('https://github.com/heliacer/aigaite')}}>

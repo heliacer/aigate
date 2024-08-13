@@ -48,6 +48,10 @@ h1.cyclamen{
   -webkit-text-stroke-color: rgb(var(--cyclamen));
 }
 
+p.cyclamen{
+  color: rgb(var(--cyclamen));
+}
+
 p{
   font-family: 'Nova Mono';
   font-size: 1.2em;
@@ -64,6 +68,7 @@ button{
   border: 1px solid rgb(var(--vivid-blue));
   border-radius: 2px;
   background-color: rgba(var(--vivid-blue), 0.2);
+  transition: box-shadow 0.2s;
 }
 
 button.aquamarine{
@@ -78,17 +83,38 @@ button.cyclamen{
   background-color: rgba(var(--cyclamen), 0.2);
 }
 
+button:hover{
+  box-shadow: 0 5px 10px rgba(var(--vivid-blue), 0.4);
+}
+
+button.aquamarine:hover{
+  box-shadow: 0 5px 10px rgba(var(--aquamarine), 0.4);
+}
+
+button.cyclamen:hover{
+  box-shadow: 0 5px 10px rgba(var(--cyclamen), 0.4);
+}
+
 img{
   margin: 20px 0;
 }
 
-input[type="number"]{
+input{
   font-family: 'Nova Mono';
   font-size: 1.2em;
-  padding-left: 5px;
 
   color: var(--primary-light);
   border: 1px solid var(--primary-light);
   border-radius: 2px;
   background-color: var(--primary-dark);
+}
+
+input[type="number"]:not(.no-spinner){
+  padding-left: 5px;
+}
+
+input.no-spinner::-webkit-outer-spin-button,
+input.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

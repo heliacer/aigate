@@ -1,5 +1,7 @@
 import { GameManager } from "./game"
-import scifi_button from './assets/scifi_button.mp3'
+import death from './assets/sounds/death.mp3'
+import button2 from './assets/sounds/button2.mp3'
+
 
 export class Stage {
 	public init() {
@@ -7,8 +9,6 @@ export class Stage {
 	}
 
 	triggerProceed() {
-		const audio = new Audio(scifi_button)
-		audio.play();
 		GameManager.getInstance().passStage()
   }
 
@@ -18,8 +18,17 @@ export class Stage {
 		)
 	}
 
-	resetGame() {
+	failStage() {
+		GameManager.getInstance().failStage()
+		const audio = new Audio(death)
+		audio.play()
+	}
+
+	playAgain() {
 		GameManager.getInstance().resetGame()
+		const audio = new Audio(button2)
+		audio.play()
+
 	}
 
 }
@@ -30,8 +39,6 @@ export class ObjectiveStage extends Stage {
   }
 	
 	triggerProceed() {
-		const audio = new Audio(scifi_button)
-		audio.play();
     GameManager.getInstance().currentObjective++
     GameManager.getInstance().passStage()
   }

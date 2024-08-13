@@ -2,6 +2,8 @@ import { Stage } from "./stage"
 import EndStage from "./stages/end"
 import WelcomeStage from "./stages/welcome"
 import FailStage from "./stages/fail"
+import button1 from './assets/sounds/button1.mp3'
+import win from './assets/sounds/win.mp3'
 
 export class GameManager {
   private static instance: GameManager
@@ -11,12 +13,12 @@ export class GameManager {
   private constructor(setCurrentPage: (element: JSX.Element) => void) {
     this.setCurrentStageComponent = setCurrentPage
     this.setupGame()
+    this.initilizeStages()
   }
 
   private setupGame() {
     const stage = new WelcomeStage()
     this.setCurrentStageComponent(stage.getComponent())
-    this.initilizeStages()
     this.generateStages()
   }
 
@@ -47,12 +49,18 @@ export class GameManager {
   }
 
   public passStage(): void {
+    
     this.currentStageIndex++
 
     if (this.currentStageIndex == this.gameStages.length) {
+      const audio = new Audio(win)
+      audio.play()
       const stage = new EndStage()
       this.setCurrentStageComponent(stage.getComponent())
       return
+    }else{
+      const audio = new Audio(button1)
+      audio.play()
     }
 
     const currentStage = this.gameStages[this.currentStageIndex]
