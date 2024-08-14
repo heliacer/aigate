@@ -32,6 +32,8 @@ export class GameManager {
   public currentObjective: number = 1;
   private currentStageIndex = -1;
   private gameStages: Stage[] = [];
+  public timeDate: number = 0;
+  public timeElapsed: number = 0;
   public setCurrentStageComponent: (element: JSX.Element) => void;
 
   public static getInstance(setCurrentPage?: (element: JSX.Element) => void): GameManager {
@@ -78,6 +80,7 @@ export class GameManager {
   }
 
   public resetGame(): void {
+    this.timeElapsed = Date.now() - this.timeDate;
     this.currentObjective = 1;
     this.currentStageIndex = -1;
     this.clearEventListeners();
@@ -92,7 +95,7 @@ export class GameManager {
     element.addEventListener(type, listener, options);
     this.eventListeners.push({ element, type, listener, options });
   }
-
+  
   private clearEventListeners(): void {
     this.eventListeners.forEach(({ element, type, listener, options }) => {
       element.removeEventListener(type, listener, options);

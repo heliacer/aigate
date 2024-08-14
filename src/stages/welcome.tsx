@@ -1,6 +1,10 @@
 import { Stage } from "../stage"
 
 export default class extends Stage {
+	startGame = () => {
+		this.startTimer()
+		this.triggerProceed()
+	}
 	getComponent() {
 		return (
 			<>
@@ -18,7 +22,7 @@ export default class extends Stage {
 
 					No humans allowed. Good luck.
 				</p>
-				<button onClick={this.triggerProceed}>proceed</button>
+				<button onClick={this.startGame}>proceed</button>
 			</>
 		)
 	}

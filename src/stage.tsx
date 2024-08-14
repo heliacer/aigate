@@ -8,6 +8,14 @@ export class Stage {
 		GameManager.allStages.push(this)
 	}
 
+	getTimeElapsed() {
+		return GameManager.getInstance().timeElapsed
+	}
+
+	startTimer() {
+		GameManager.getInstance().timeDate = Date.now()
+	}
+
 	triggerProceed() {
 		GameManager.getInstance().passStage()
   }

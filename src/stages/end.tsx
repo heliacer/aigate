@@ -4,11 +4,17 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { faArrowRotateRight } from "@fortawesome/free-solid-svg-icons"
 
 export default class extends Stage {
+
+  private formatTime(milliseconds: number): string {
+  	return (milliseconds / 1000).toFixed(3); 
+ 	}
 	getComponent() {
 		return (
 			<>
 				<h1>ACCESS GRANTED</h1>
-				// Include: stars, 1-3 and timer
+				<p className="vivid-blue">
+					You finished in {this.formatTime(this.getTimeElapsed())} seconds.
+				</p> <br />
 				<p>
 					Congratulations, Operative. <br/><br/>
 

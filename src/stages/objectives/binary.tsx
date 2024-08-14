@@ -24,7 +24,6 @@ import { ObjectiveStage } from "../../stage"
   }
 
   getComponent() {
-    this.inputValue = '00000000'
     this.selectedHex = this.generateRandomHex()
     this.selectedBinary = this.hexToBinary(this.selectedHex)
 
@@ -37,8 +36,7 @@ import { ObjectiveStage } from "../../stage"
           className="w-28 mt-3 text-center no-spinner"
           type="number"
           maxLength={8}
-          placeholder={this.inputValue}
-          value={undefined}
+          placeholder="00000000"
           onChange={(evt) => { this.inputValue = evt.target.value }}
         />
         <button onClick={this.processAnswer}>Submit</button>

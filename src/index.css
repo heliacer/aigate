@@ -52,6 +52,10 @@ p.cyclamen{
   color: rgb(var(--cyclamen));
 }
 
+p.vivid-blue{
+  color: rgb(var(--vivid-blue));
+}
+
 p{
   font-family: 'Nova Mono';
   font-size: 1.2em;
@@ -121,4 +125,10 @@ input.no-spinner::-webkit-outer-spin-button,
 input.no-spinner::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.binary-cell{
+  cursor: pointer;
+  background: rgba(var(--vivid-blue), 0.2);
+  border: 1px solid rgb(var(--vivid-blue));
+  border-radius: 2px;
 }
