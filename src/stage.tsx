@@ -26,8 +26,8 @@ export class Stage {
 		)
 	}
 
-	failStage() {
-		GameManager.getInstance().failStage()
+	failStage(reason?: string) {
+		GameManager.getInstance().failStage(reason)
 		const audio = new Audio(death)
 		audio.play()
 	}

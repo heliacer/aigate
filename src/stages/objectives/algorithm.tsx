@@ -1,17 +1,19 @@
 import { ObjectiveStage } from "../../stage"
 import select from '../../assets/sounds/select.mp3'
 
+type alogrithmType = {sequence: number[], result: number}
+
 (new (class extends ObjectiveStage {
   private inputValue: number = 0
 
-  private algorithms = [
+  private algorithms: alogrithmType[] = [
     { sequence: [0, 1, 1, 2, 3, 5], result: 8 }, // Fibonacci
     { sequence: [2, 4, 8, 16, 32], result: 64 }, // Powers of 2
     { sequence: [1, 4, 9, 16, 25], result: 36 }, // Squares
     { sequence: [3, 6, 9, 12, 15], result: 18 },
   ]
 
-  private chosenAlgorithm = this.algorithms[Math.floor(Math.random() * this.algorithms.length)]
+  private chosenAlgorithm: alogrithmType = {sequence: [], result: 0};
 
   private processAnswer = () => {
     if (this.inputValue === this.chosenAlgorithm.result) {
@@ -29,6 +31,7 @@ import select from '../../assets/sounds/select.mp3'
 
   getComponent() {
     this.inputValue = 0
+    this.chosenAlgorithm = this.algorithms[Math.floor(Math.random() * this.algorithms.length)]
     return (
       <>
         <h1>{this.getStageNumber()}</h1>

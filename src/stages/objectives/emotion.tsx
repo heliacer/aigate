@@ -10,8 +10,8 @@ import smile from '../../assets/vectors/smile.svg'
         <br />
         <img src={smile} alt="" />
         <div className="flex gap-6">
-          <button className="mb-0" onClick={this.failStage}>Yes</button>
-          <button className="mb-0" onClick={this.failStage}>No</button>
+          <button className="mb-0" onClick={() => this.failStage()}>Yes</button>
+          <button className="mb-0" onClick={() => this.failStage()}>No</button>
         </div>
         <button
           style={{paddingLeft:55, paddingRight: 55}}

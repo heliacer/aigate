@@ -8,7 +8,7 @@ import { ObjectiveStage } from "../../stage"
       buttons.push(
         <button
           key={i}
-          onClick={this.failStage}
+          onClick={() => this.failStage()}
           style={this.getRandomPositionStyle()}
         >
           proceed

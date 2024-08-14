@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { GameManager } from "./game"
 
 function App() {
-  const [currentPage, setCurrentPage] = useState(<></>)
+  const [currentPage, setCurrentPage] = useState<JSX.Element>(<></>)
 
   const updateCurrentPage = (reactElement: JSX.Element) => {
     setCurrentPage(reactElement)

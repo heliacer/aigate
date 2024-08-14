@@ -18,7 +18,7 @@ import mouse_wrong from '../../assets/vectors/mouse_wrong.svg';
     const dy = event.clientY - this.lastY;
 
     if (Math.abs(dx) > this.tolerance && Math.abs(dy) > this.tolerance) {
-      this.failStage();
+      this.failStage("Your movements aren't precise enough, Fleshling.");
       return;
     }
 
@@ -42,7 +42,10 @@ import mouse_wrong from '../../assets/vectors/mouse_wrong.svg';
     return (
       <>
         <h1 className="aquamarine">Ruleset</h1>
-        <p>Your movements must be precise and deliberate.</p>
+        <p>
+          Your movements must be precise and deliberate. <br/>
+          A machine’s movements are exact.
+        </p>
         <img src={mouse_correct} alt="Correct movement" />
         <img src={mouse_wrong} alt="Wrong movement" />
         <button className="aquamarine" onClick={this.triggerProceed}>Proceed</button>

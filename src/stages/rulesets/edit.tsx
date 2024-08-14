@@ -7,7 +7,7 @@ import backspace from '../../assets/vectors/backspace.svg'
       const e = event as KeyboardEvent;
       if (e.key === 'Backspace' || e.key === 'Delete') {
         e.preventDefault();
-        this.failStage();
+        this.failStage("A machine’s response is absolute, Human.");
       }
     };
 

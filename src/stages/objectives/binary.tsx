@@ -24,6 +24,7 @@ import { ObjectiveStage } from "../../stage"
   }
 
   getComponent() {
+    console.log(this.selectedHex)
     this.selectedHex = this.generateRandomHex()
     this.selectedBinary = this.hexToBinary(this.selectedHex)
 

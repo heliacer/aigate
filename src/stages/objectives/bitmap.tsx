@@ -1,7 +1,7 @@
 import { ObjectiveStage } from "../../stage"
 
 (new (class extends ObjectiveStage {
-  private binaryDigits = Array(16).fill(0).map(() => Math.round(Math.random()));
+  private binaryDigits = Array(16).fill(0);
   private cellStates = Array(16).fill(0);
 
   private processAnswer = () => {
@@ -25,6 +25,7 @@ import { ObjectiveStage } from "../../stage"
   }
 
   getComponent() {
+    this.binaryDigits = Array(16).fill(0).map(() => Math.round(Math.random()));
     return (
       <>
         <h1>{this.getStageNumber()}</h1>

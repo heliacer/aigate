@@ -132,3 +132,7 @@ input.no-spinner::-webkit-inner-spin-button {
   border: 1px solid rgb(var(--vivid-blue));
   border-radius: 2px;
 }
+
+.binary-cell:hover{
+  box-shadow: 0 5px 10px rgba(var(--vivid-blue), 0.4);
+}
