@@ -1,32 +1,32 @@
-import { ObjectiveStage } from "../../stage";
+import { ObjectiveStage } from "../../stage"
 
 (new (class extends ObjectiveStage {
-  private inputValue: string = '00000000';
-  private selectedHex: string = this.generateRandomHex();
-  private selectedBinary: string = this.hexToBinary(this.selectedHex);
+  private inputValue: string = '00000000'
+  private selectedHex: string = this.generateRandomHex()
+  private selectedBinary: string = this.hexToBinary(this.selectedHex)
 
   private generateRandomHex(): string {
-    const randomValue = Math.floor(Math.random() * 256);
-    return randomValue.toString(16).toUpperCase().padStart(2, '0'); 
+    const randomValue = Math.floor(Math.random() * 256)
+    return randomValue.toString(16).toUpperCase().padStart(2, '0') 
   }
 
   private hexToBinary(hex: string): string {
-    const binary = parseInt(hex, 16).toString(2).padStart(8, '0');
-    return binary;
+    const binary = parseInt(hex, 16).toString(2).padStart(8, '0')
+    return binary
   }
 
   private processAnswer = () => {
     if (this.inputValue === this.selectedBinary) {
-      this.triggerProceed();
+      this.triggerProceed()
     } else {
-      this.failStage();
+      this.failStage()
     }
-  };
+  }
 
   getComponent() {
-    this.inputValue = '00000000';
-    this.selectedHex = this.generateRandomHex();
-    this.selectedBinary = this.hexToBinary(this.selectedHex);
+    this.inputValue = '00000000'
+    this.selectedHex = this.generateRandomHex()
+    this.selectedBinary = this.hexToBinary(this.selectedHex)
 
     return (
       <>
@@ -43,6 +43,6 @@ import { ObjectiveStage } from "../../stage";
         />
         <button onClick={this.processAnswer}>Submit</button>
       </>
-    );
+    )
   }
-})()).init();
+})()).init()
