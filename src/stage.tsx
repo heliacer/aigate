@@ -25,7 +25,7 @@ export class Stage {
 	}
 
 	playAgain() {
-		GameManager.getInstance().resetGame()
+		GameManager.getInstance().setupGame()
 		const audio = new Audio(button2)
 		audio.play()
 
@@ -45,5 +45,12 @@ export class ObjectiveStage extends Stage {
 }
 
 export class RulesetStage extends Stage {
-
+	addEventListener(
+		element: HTMLElement | Document,
+		type: string, listener: EventListenerOrEventListenerObject,
+		options?: boolean | AddEventListenerOptions
+	)
+	{
+		GameManager.getInstance().addEventListener(element, type, listener, options)
+	}
 }

@@ -13,7 +13,12 @@ import smile from '../../assets/vectors/smile.svg'
           <button className="mb-0" onClick={this.failStage}>Yes</button>
           <button className="mb-0" onClick={this.failStage}>No</button>
         </div>
-        <button style={{paddingLeft:55, paddingRight: 55}} onClick={this.triggerProceed}>I don't know</button>
+        <button
+          style={{paddingLeft:55, paddingRight: 55}}
+          onClick={this.triggerProceed}
+        >
+          I don't know
+        </button>
       </>
     )
   }

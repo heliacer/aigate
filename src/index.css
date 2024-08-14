@@ -99,6 +99,10 @@ img{
   margin: 20px 0;
 }
 
+em{
+  font-family: 'Nova Mono';
+}
+
 input{
   font-family: 'Nova Mono';
   font-size: 1.2em;

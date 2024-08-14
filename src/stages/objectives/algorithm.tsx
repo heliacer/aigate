@@ -4,8 +4,17 @@ import select from '../../assets/sounds/select.mp3'
 (new (class extends ObjectiveStage {
   private inputValue: number = 0
 
+  private algorithms = [
+    { sequence: [0, 1, 1, 2, 3, 5], result: 8 }, // Fibonacci
+    { sequence: [2, 4, 8, 16, 32], result: 64 }, // Powers of 2
+    { sequence: [1, 4, 9, 16, 25], result: 36 }, // Squares
+    { sequence: [3, 6, 9, 12, 15], result: 18 },
+  ]
+
+  private chosenAlgorithm = this.algorithms[Math.floor(Math.random() * this.algorithms.length)]
+
   private processAnswer = () => {
-    if (this.inputValue === 8) {
+    if (this.inputValue === this.chosenAlgorithm.result) {
       this.triggerProceed()
     } else {
       this.failStage()
@@ -24,13 +33,15 @@ import select from '../../assets/sounds/select.mp3'
       <>
         <h1>{this.getStageNumber()}</h1>
         <p>Objective: Proceed the algorithm.</p><br />
-        <p>0</p>
-        <p>1</p>
-        <p>1</p>
-        <p>2</p>
-        <p>3</p>
-        <p>5</p>
-        <input className="w-10 ml-5 mt-1" type="number" min={0} defaultValue={0} onChange={(evt) => {this.InputHandler(evt)}} />
+        {this.chosenAlgorithm.sequence.map((num, index) => (
+          <p key={index}>{num}</p>
+        ))}
+        <input
+          className="w-12 ml-5 mt-1"
+          type="number" min={0}
+          defaultValue={0}
+          onChange={(evt) => {this.InputHandler(evt)}}
+        />
         <button onClick={this.processAnswer}>submit</button>
       </>
     )
