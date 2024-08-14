@@ -5,10 +5,10 @@ import { faArrowRotateRight } from "@fortawesome/free-solid-svg-icons"
 
 export default class extends Stage {
 
-  private formatTime(milliseconds: number): string {
-  	return (milliseconds / 1000).toFixed(3); 
- 	}
-	getComponent() {
+	private formatTime(milliseconds: number): string {
+		return (milliseconds / 1000).toFixed(3);
+	}
+	GetComponent = () => {
 		return (
 			<>
 				<h1>ACCESS GRANTED</h1>

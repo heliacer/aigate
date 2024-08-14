@@ -17,7 +17,7 @@ import { ObjectiveStage } from "../../stage"
     }
   }
 
-  getComponent() {
+  GetComponent = () => {
     this.correctAnswer = this.quotes[Math.floor(Math.random() * this.quotes.length)]
     return (
       <>

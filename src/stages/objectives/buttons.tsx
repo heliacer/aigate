@@ -1,7 +1,7 @@
 import { ObjectiveStage } from "../../stage"
 
 (new (class extends ObjectiveStage {
-  getComponent() {
+  GetComponent = () => {
     const numRegularButtons = 20
     const buttons = []
     for (let i = 0; i < numRegularButtons; i++) {

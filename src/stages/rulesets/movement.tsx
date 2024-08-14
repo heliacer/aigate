@@ -26,7 +26,7 @@ import mouse_wrong from '../../assets/vectors/mouse_wrong.svg';
     this.lastY = event.clientY;
   }
   
-  getComponent() {
+  GetComponent = () => {
     this.lastX = null;
     this.lastY = null;
 

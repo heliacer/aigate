@@ -3,7 +3,7 @@ import mouseclick from '../../assets/vectors/mouseclick.svg'
 
 
 (new (class extends RulesetStage {
-  getComponent() {
+  GetComponent = () => {
     const handleRightClick: EventListener = (event: Event) => {
       event.preventDefault();
       this.failStage("A machine does not need fancy ways, Meatbag.");

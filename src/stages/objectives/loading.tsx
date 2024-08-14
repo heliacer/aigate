@@ -1,23 +1,42 @@
 import { ObjectiveStage } from "../../stage"
+import React from "react";
 
 (new (class extends ObjectiveStage {
+  private fps = 30
+  private duration = 10_000 // 10 seconds
+
   private timeoutSession: number = -1
+  private startTime = 0
 
   private processAnswer = () => {
-    clearTimeout(this.timeoutSession)
     this.triggerProceed()
   }
 
-  getComponent() {
+  cleanUp(): void {
+    clearInterval(this.timeoutSession)
+  }
 
-    this.timeoutSession = setTimeout(() => {
-      this.failStage("you wasted your time")
-    }, 10*1000)
+  GetComponent = () => {
+    const progressElement = React.createRef<HTMLProgressElement>()
+    this.startTime = Date.now()
+
+    this.timeoutSession = setInterval(() => {
+      const timePassed = Date.now() - this.startTime
+      if (timePassed >= this.duration) {
+        this.failStage("you wasted your time")
+      }
+
+      if (progressElement.current) {
+        progressElement.current.value = timePassed / this.duration
+      }
+
+    }, 1000/this.fps)
 
     return (
       <>
         <h1>{this.getStageNumber()}</h1>
         <p>Do not waste your time.</p>
+        <progress ref={progressElement} value={0}></progress>
         <button onClick={this.processAnswer}>submit</button>
       </>
     )

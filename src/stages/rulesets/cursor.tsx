@@ -1,8 +1,8 @@
 import { RulesetStage } from "../../stage"
 import cursor from '../../assets/vectors/cursor.svg'
 (new (class extends RulesetStage {
-  getComponent() {
-    document.body.style.cursor = 'none !important'
+  GetComponent = () => {
+    document.body.style.setProperty('cursor', 'none', 'important');
     return (
       <>
         <h1 className="aquamarine">Ruleset</h1>

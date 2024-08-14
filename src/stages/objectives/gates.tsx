@@ -25,7 +25,7 @@ import select from '../../assets/sounds/select.mp3'
     }
   }
 
-  getComponent() {
+  GetComponent = () => {
     this.inputA = 0
     this.inputB = 0
     return (

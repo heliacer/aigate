@@ -1,11 +1,13 @@
 import { Stage } from "../stage"
 
+
+
 export default class extends Stage {
 	startGame = () => {
 		this.startTimer()
 		this.triggerProceed()
 	}
-	getComponent() {
+	GetComponent = () => {
 		return (
 			<>
 				<h1>AI GATE</h1>

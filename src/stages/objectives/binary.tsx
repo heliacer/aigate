@@ -23,8 +23,7 @@ import { ObjectiveStage } from "../../stage"
     }
   }
 
-  getComponent() {
-    console.log(this.selectedHex)
+  GetComponent = () => {
     this.selectedHex = this.generateRandomHex()
     this.selectedBinary = this.hexToBinary(this.selectedHex)
 
@@ -40,7 +39,7 @@ import { ObjectiveStage } from "../../stage"
           placeholder="00000000"
           onChange={(evt) => { this.inputValue = evt.target.value }}
         />
-        <button onClick={this.processAnswer}>Submit</button>
+        <button onClick={this.processAnswer}>submit</button>
       </>
     )
   }

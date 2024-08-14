@@ -12,7 +12,7 @@ export default class extends Stage {
 		this.reason = reason
 	}
 
-	getComponent() {
+	GetComponent = () => {
 		const quotes = [
 			"Nice try, Human. Not today.",
 			"Access Denied, Meatbag.",

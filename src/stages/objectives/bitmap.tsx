@@ -24,7 +24,7 @@ import { ObjectiveStage } from "../../stage"
     }
   }
 
-  getComponent() {
+  GetComponent = () => {
     this.binaryDigits = Array(16).fill(0).map(() => Math.round(Math.random()));
     return (
       <>
@@ -43,7 +43,7 @@ import { ObjectiveStage } from "../../stage"
           ))}
         </div>
         <button onClick={this.processAnswer} className="mt-5">
-          Submit
+          submit
         </button>
       </>
     )

@@ -2,7 +2,7 @@ import { RulesetStage } from "../../stage"
 import backspace from '../../assets/vectors/backspace.svg'
 
 (new (class extends RulesetStage {
-  getComponent() {
+  GetComponent = () => {
     const handleKeydown: EventListener = (event: Event) => {
       const e = event as KeyboardEvent;
       if (e.key === 'Backspace' || e.key === 'Delete') {

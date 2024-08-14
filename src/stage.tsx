@@ -20,13 +20,14 @@ export class Stage {
 		GameManager.getInstance().passStage()
   }
 
-	getComponent() {
+	GetComponent = () => {
 		return (
 			<p>Uninitilized Stage</p>
 		)
 	}
 
 	failStage(reason?: string) {
+		this.cleanUp()
 		GameManager.getInstance().failStage(reason)
 		const audio = new Audio(death)
 		audio.play()
@@ -39,6 +40,10 @@ export class Stage {
 
 	}
 
+	cleanUp() {
+
+	}
+
 }
 
 export class ObjectiveStage extends Stage {
@@ -47,6 +52,7 @@ export class ObjectiveStage extends Stage {
   }
 	
 	triggerProceed() {
+		this.cleanUp()
     GameManager.getInstance().currentObjective++
     GameManager.getInstance().passStage()
   }

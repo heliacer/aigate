@@ -1,10 +1,9 @@
-import { Stage } from "./stage"
+import { ObjectiveStage, RulesetStage, Stage } from "./stage"
 import EndStage from "./stages/end"
 import WelcomeStage from "./stages/welcome"
 import FailStage from "./stages/fail"
 import button1 from './assets/sounds/button1.mp3'
 import win from './assets/sounds/win.mp3'
-import { useState } from "react"
 
 type EventListenerEntry = {
   element: HTMLElement | Document,
@@ -15,7 +14,12 @@ type EventListenerEntry = {
 
 export class GameManager {
   private static instance: GameManager
+
   public static allStages: Stage[] = []
+
+  public static ObjectiveStages: ObjectiveStage[] = []
+  public static RulesetStages: RulesetStage[] = [] 
+
   private eventListeners: EventListenerEntry[] = []
 
   private constructor(setCurrentPage: (element: JSX.Element) => void) {
@@ -25,9 +29,14 @@ export class GameManager {
   }
 
   public setupGame() {
-    const stage = new WelcomeStage()
-    this.setCurrentStageComponent(stage.getComponent())
+    const stage = new WelcomeStage() as Stage
+    this.setCurrentStageComponent(stage.GetComponent())
     this.generateStages()
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'n') {
+        this.getCurrentStage().triggerProceed()
+      }
+    })
   }
 
   public currentObjective: number = 1
@@ -52,16 +61,13 @@ export class GameManager {
     }
   }
 
+
   public generateStages(): void {
     this.gameStages = GameManager.allStages
   }
-
-  public getClickerPage: React.FC = () => {
-    const [clicks, setClicks] = useState(0);
-
-    return <>
-      <h1 onClick={() => setClicks(clicks + 1)}>cookie clicker: {clicks}</h1>
-    </>
+  
+  public getCurrentStage(): Stage{
+    return this.gameStages[this.currentStageIndex]
   }
 
   public passStage(): void {
@@ -70,19 +76,19 @@ export class GameManager {
       (new Audio(win)).play()
       this.resetGame()
       const stage = new EndStage()
-      this.setCurrentStageComponent(stage.getComponent())
+      this.setCurrentStageComponent(stage.GetComponent())
       return
     }
 
     (new Audio(button1)).play()
-    const currentStage = this.gameStages[this.currentStageIndex]
-    this.setCurrentStageComponent(currentStage.getComponent())
+    const currentStage = this.getCurrentStage()
+    this.setCurrentStageComponent(currentStage.GetComponent())
   }
 
   public failStage(reason?: string): void {
     this.resetGame()
     const failStage = new FailStage(reason)
-    this.setCurrentStageComponent(failStage.getComponent())
+    this.setCurrentStageComponent(failStage.GetComponent())
   }
 
   public resetGame(): void {

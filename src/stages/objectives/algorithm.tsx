@@ -29,7 +29,7 @@ type alogrithmType = {sequence: number[], result: number}
     this.inputValue = parseInt(evt.target.value)
   }
 
-  getComponent() {
+  GetComponent = () => {
     this.inputValue = 0
     this.chosenAlgorithm = this.algorithms[Math.floor(Math.random() * this.algorithms.length)]
     return (

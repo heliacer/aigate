@@ -2,7 +2,7 @@ import { ObjectiveStage } from "../../stage"
 import smile from '../../assets/vectors/smile.svg'
 
 (new (class extends ObjectiveStage {
-  getComponent() {
+  GetComponent = () => {
     return (
       <>
         <h1>{this.getStageNumber()}</h1>
