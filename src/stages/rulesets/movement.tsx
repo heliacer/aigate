@@ -1,43 +1,43 @@
-import { RulesetStage } from "../../stage";
-import mouse_correct from '../../assets/vectors/mouse_correct.svg';
-import mouse_wrong from '../../assets/vectors/mouse_wrong.svg';
+import { RulesetStage } from "../../stage"
+import mouse_correct from '../../assets/vectors/mouse_correct.svg'
+import mouse_wrong from '../../assets/vectors/mouse_wrong.svg'
 
 (new (class extends RulesetStage {
-  private lastX: number | null = null;
-  private lastY: number | null = null;
-  private tolerance: number = 15; 
+  private lastX: number | null = null
+  private lastY: number | null = null
+  private tolerance: number = 15 
   
   private handleMouseMove = (event: MouseEvent): void => {
     if (this.lastX === null || this.lastY === null) {
-      this.lastX = event.clientX;
-      this.lastY = event.clientY;
-      return;
+      this.lastX = event.clientX
+      this.lastY = event.clientY
+      return
     }
 
-    const dx = event.clientX - this.lastX;
-    const dy = event.clientY - this.lastY;
+    const dx = event.clientX - this.lastX
+    const dy = event.clientY - this.lastY
 
     if (Math.abs(dx) > this.tolerance && Math.abs(dy) > this.tolerance) {
-      this.failStage("Your movements aren't precise enough, Fleshling.");
-      return;
+      this.failStage("Your movements aren't precise enough, Fleshling.")
+      return
     }
 
-    this.lastX = event.clientX;
-    this.lastY = event.clientY;
+    this.lastX = event.clientX
+    this.lastY = event.clientY
   }
   
   GetComponent = () => {
-    this.lastX = null;
-    this.lastY = null;
+    this.lastX = null
+    this.lastY = null
 
-    const mouseMoveListener: EventListener = this.handleMouseMove as EventListener;
+    const mouseMoveListener: EventListener = this.handleMouseMove as EventListener
   
     this.addEventListener(
       document,
       'mousemove',
       mouseMoveListener,
       false
-    );
+    )
 
     return (
       <>
@@ -50,6 +50,6 @@ import mouse_wrong from '../../assets/vectors/mouse_wrong.svg';
         <img src={mouse_wrong} alt="Wrong movement" />
         <button className="aquamarine" onClick={this.triggerProceed}>Proceed</button>
       </>
-    );
+    )
   }
-})()).init();
+})()).init()

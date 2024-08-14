@@ -1,5 +1,5 @@
 import { ObjectiveStage } from "../../stage"
-import React from "react";
+import React from "react"
 
 (new (class extends ObjectiveStage {
   private fps = 30
@@ -36,8 +36,8 @@ import React from "react";
       <>
         <h1>{this.getStageNumber()}</h1>
         <p>Do not waste your time.</p>
-        <progress ref={progressElement} value={0}></progress>
-        <button onClick={this.processAnswer}>submit</button>
+        <br />
+        <progress onClick={this.processAnswer} ref={progressElement} value={0}></progress>
       </>
     )
   }

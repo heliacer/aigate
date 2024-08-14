@@ -27,16 +27,14 @@ export class Stage {
 	}
 
 	failStage(reason?: string) {
+		(new Audio(death)).play()
 		this.cleanUp()
 		GameManager.getInstance().failStage(reason)
-		const audio = new Audio(death)
-		audio.play()
 	}
 
 	playAgain() {
+		(new Audio(button2)).play()
 		GameManager.getInstance().setupGame()
-		const audio = new Audio(button2)
-		audio.play()
 
 	}
 
@@ -52,7 +50,7 @@ export class ObjectiveStage extends Stage {
   }
 	
 	triggerProceed() {
-		this.cleanUp()
+    this.cleanUp()
     GameManager.getInstance().currentObjective++
     GameManager.getInstance().passStage()
   }

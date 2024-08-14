@@ -15,8 +15,7 @@ import select from '../../assets/sounds/select.mp3'
   }
 
   private InputHandler = (evt: React.ChangeEvent<HTMLInputElement>, inputType: 'A' | 'B') => {
-    const audio = new Audio(select)
-    audio.play()
+    (new Audio(select)).play()
     const value = parseInt(evt.target.value)
     if (inputType === 'A') {
       this.inputA = value

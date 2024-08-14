@@ -4,19 +4,19 @@ import backspace from '../../assets/vectors/backspace.svg'
 (new (class extends RulesetStage {
   GetComponent = () => {
     const handleKeydown: EventListener = (event: Event) => {
-      const e = event as KeyboardEvent;
+      const e = event as KeyboardEvent
       if (e.key === 'Backspace' || e.key === 'Delete') {
-        e.preventDefault();
-        this.failStage("A machine’s response is absolute, Human.");
+        e.preventDefault()
+        this.failStage("A machine’s response is absolute, Human.")
       }
-    };
+    }
 
     this.addEventListener(
       document,
       'keydown',
       handleKeydown,
       false
-    );
+    )
 
     return (
       <>

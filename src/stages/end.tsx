@@ -2,11 +2,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Stage } from "../stage"
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { faArrowRotateRight } from "@fortawesome/free-solid-svg-icons"
+import logo from '../assets/vectors/logo.svg'
 
 export default class extends Stage {
 
 	private formatTime(milliseconds: number): string {
-		return (milliseconds / 1000).toFixed(3);
+		return (milliseconds / 1000).toFixed(3)
 	}
 	GetComponent = () => {
 		return (
@@ -32,6 +33,8 @@ export default class extends Stage {
 						<FontAwesomeIcon icon={faGithub}/> source code
 					</button>
 				</div>
+				<p className="vivid-blue flex items-center">
+				  <img src={logo} alt="Heliacer Logo" className="mr-2"/>MADE BY HELIACER </p>
 			</>
 		)
 	}

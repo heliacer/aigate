@@ -1,31 +1,33 @@
 import { ObjectiveStage } from "../../stage"
+import select from '../../assets/sounds/select.mp3'
 
 (new (class extends ObjectiveStage {
-  private binaryDigits = Array(16).fill(0);
-  private cellStates = Array(16).fill(0);
+  private binaryDigits = Array(16).fill(0)
+  private cellStates = Array(16).fill(0)
 
   private processAnswer = () => {
-    const allToggledCorrectly = this.binaryDigits.every((digit, index) => this.cellStates[index] === digit);
+    const allToggledCorrectly = this.binaryDigits.every((digit, index) => this.cellStates[index] === digit)
 
     if (allToggledCorrectly) {
-      this.triggerProceed();
+      this.triggerProceed()
     } else {
-      this.failStage();
+      this.failStage()
     }
   }
 
   private toggleCell = (index: number) => {
-    this.cellStates[index] = this.cellStates[index] === 0 ? 1 : 0;
-    const cell = document.getElementById(`cell-${index}`);
+    (new Audio(select)).play()
+    this.cellStates[index] = this.cellStates[index] === 0 ? 1 : 0
+    const cell = document.getElementById(`cell-${index}`)
     if (cell) {
       cell.style.backgroundColor = this.cellStates[index] === 1 
         ? "rgb(var(--vivid-blue))" 
-        : "rgba(var(--vivid-blue), 0.2)";
+        : "rgba(var(--vivid-blue), 0.2)"
     }
   }
 
   GetComponent = () => {
-    this.binaryDigits = Array(16).fill(0).map(() => Math.round(Math.random()));
+    this.binaryDigits = Array(16).fill(0).map(() => Math.round(Math.random()))
     return (
       <>
         <h1>{this.getStageNumber()}</h1>

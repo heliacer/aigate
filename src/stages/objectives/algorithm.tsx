@@ -13,7 +13,7 @@ type alogrithmType = {sequence: number[], result: number}
     { sequence: [3, 6, 9, 12, 15], result: 18 },
   ]
 
-  private chosenAlgorithm: alogrithmType = {sequence: [], result: 0};
+  private chosenAlgorithm: alogrithmType = {sequence: [], result: 0}
 
   private processAnswer = () => {
     if (this.inputValue === this.chosenAlgorithm.result) {
@@ -24,8 +24,7 @@ type alogrithmType = {sequence: number[], result: number}
   }
 
   private InputHandler(evt: React.ChangeEvent<HTMLInputElement>) {
-    const audio = new Audio(select)
-    audio.play()
+    (new Audio(select)).play()
     this.inputValue = parseInt(evt.target.value)
   }
 
