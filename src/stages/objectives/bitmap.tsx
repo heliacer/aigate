@@ -26,6 +26,12 @@ import select from '../../assets/sounds/select.mp3'
     }
   }
 
+  cleanUp() {
+    this.cellStates = Array(16).fill(0)
+    this.binaryDigits = Array(16).fill(0).map(() => Math.round(Math.random()))
+  }
+
+
   GetComponent = () => {
     this.binaryDigits = Array(16).fill(0).map(() => Math.round(Math.random()))
     return (

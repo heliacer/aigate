@@ -2,6 +2,9 @@ import { ObjectiveStage } from "../../stage"
 import smile from '../../assets/vectors/smile.svg'
 
 (new (class extends ObjectiveStage {
+  private processAnswer = () => {
+    this.triggerProceed()
+  }
   GetComponent = () => {
     return (
       <>
@@ -15,7 +18,7 @@ import smile from '../../assets/vectors/smile.svg'
         </div>
         <button
           style={{paddingLeft:55, paddingRight: 55}}
-          onClick={this.triggerProceed}
+          onClick={this.processAnswer}
         >
           I don't know
         </button>

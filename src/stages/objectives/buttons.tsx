@@ -1,6 +1,9 @@
 import { ObjectiveStage } from "../../stage"
 
 (new (class extends ObjectiveStage {
+  private processAnswer = () => {
+    this.triggerProceed()
+  }
   GetComponent = () => {
     const numRegularButtons = 20
     const buttons = []
@@ -19,7 +22,7 @@ import { ObjectiveStage } from "../../stage"
       <button
         id="SPECIAL"
         key='special'
-        onClick={this.triggerProceed}
+        onClick={this.processAnswer}
         style={this.getRandomPositionStyle()}
       >
         proceed

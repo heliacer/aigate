@@ -40,6 +40,10 @@ import { ObjectiveStage } from "../../stage"
     document.addEventListener("mousemove", this.handleMouseMove)
   }
 
+  cleanUp(): void {
+    document.removeEventListener("mousemove", this.handleMouseMove)
+  }
+
   GetComponent = () => {
     this.attachMouseMoveHandler()
     return (

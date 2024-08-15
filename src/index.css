@@ -7,7 +7,7 @@
 
 :root{
   --primary-dark: #1A1A1A;
-  --primary-light: #F5F5F5;
+  --primary-light: 245, 245, 245;
 
   --vivid-blue: 86, 203, 249;
   --cyclamen: 255, 114, 159;
@@ -59,7 +59,7 @@ p.vivid-blue{
 p{
   font-family: 'Nova Mono';
   font-size: 1.2em;
-  color: var(--primary-light);
+  color: rgb(var(--primary-light));
 }
 
 button{
@@ -110,9 +110,9 @@ em{
 input{
   font-family: 'Nova Mono';
   font-size: 1.2em;
-
-  color: var(--primary-light);
-  border: 1px solid var(--primary-light);
+  transition: box-shadow 0.2s;
+  color: rgb(var(--primary-light));
+  border: 1px solid rgb(var(--primary-light));
   border-radius: 2px;
   background-color: var(--primary-dark);
 }
@@ -126,6 +126,12 @@ input.no-spinner::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+input:hover{
+  box-shadow: 0 5px 10px rgba(var(--primary-light), 0.4);
+}
+
+
 .binary-cell{
   cursor: pointer;
   background: rgba(var(--vivid-blue), 0.2);
@@ -143,6 +149,11 @@ progress {
   appearance: none;
   border: solid 1px rgb(var(--vivid-blue));
   border-radius: 2px;
+  transition: box-shadow 0.2s;
+}
+
+progress:hover{
+  box-shadow: 0 5px 10px rgba(var(--vivid-blue), 0.4);
 }
 
 progress::-webkit-progress-bar {
@@ -152,4 +163,9 @@ progress::-webkit-progress-bar {
 
 progress::-webkit-progress-value {
   background-color: rgb(var(--vivid-blue));
+}
+
+body.cursor-none,
+body.cursor-none * {
+  cursor: none !important;
 }

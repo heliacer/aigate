@@ -16,16 +16,11 @@ export class GameManager {
   private static instance: GameManager
 
   public static allStages: Stage[] = []
-
-  public static ObjectiveStages: ObjectiveStage[] = []
-  public static RulesetStages: RulesetStage[] = [] 
-
   private eventListeners: EventListenerEntry[] = []
 
   private constructor(setCurrentPage: (element: JSX.Element) => void) {
     this.setCurrentStageComponent = setCurrentPage
-    this.initializeStages()
-    this.setupGame()
+    this.initializeStages().then(() => this.setupGame())
   }
 
   public setupGame() {
@@ -33,7 +28,7 @@ export class GameManager {
     this.setCurrentStageComponent(stage.GetComponent())
     this.generateStages()
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'n') {
+      if (event.key === "Escape") {
         this.getCurrentStage().triggerProceed()
       }
     })
@@ -54,17 +49,24 @@ export class GameManager {
     return GameManager.instance
   }
 
-  public initializeStages(): void {
+  public async initializeStages(): Promise<void> {
     const modules = import.meta.glob(['./stages/objectives/*.tsx', './stages/rulesets/*.tsx'])
-    for (const path in modules) {
-      modules[path]()
-    }
+    await Promise.all(
+      Object.keys(modules).map((path) => modules[path]())
+    )
   }
-
-
-  public generateStages(): void {
-    this.gameStages = GameManager.allStages
+  
+  
+  public generateStages(): void{
+    let objectiveStages = GameManager.allStages.filter(x => x instanceof ObjectiveStage)
+    const rulesetStages = GameManager.allStages.filter(x => x instanceof RulesetStage)
+    objectiveStages = objectiveStages.sort(() => Math.random() - 0.5)
+    const [first, second] = objectiveStages.splice(-2)
+    let mixedStages = [...objectiveStages, ...rulesetStages]
+    mixedStages = mixedStages.sort(() => Math.random() - 0.5)
+    this.gameStages = [first, ...mixedStages, second]
   }
+  
   
   public getCurrentStage(): Stage{
     if (this.currentStageIndex === -1) return new WelcomeStage()
@@ -93,7 +95,7 @@ export class GameManager {
   }
 
   public resetGame(): void {
-    document.body.style.cursor = 'auto'
+    document.body.classList.remove('cursor-none')
     this.timeElapsed = Date.now() - this.timeDate
     this.currentObjective = 1
     this.currentStageIndex = -1

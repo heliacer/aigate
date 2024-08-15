@@ -12,7 +12,7 @@ import React from "react"
     this.triggerProceed()
   }
 
-  cleanUp(): void {
+  cleanUp() {
     clearInterval(this.timeoutSession)
   }
 

@@ -4,7 +4,7 @@ import select from '../../assets/sounds/select.mp3'
 type alogrithmType = {sequence: number[], result: number}
 
 (new (class extends ObjectiveStage {
-  private inputValue: number = 0
+  private inputValue: number | undefined = 0
 
   private algorithms: alogrithmType[] = [
     { sequence: [0, 1, 1, 2, 3, 5], result: 8 }, // Fibonacci
@@ -26,6 +26,10 @@ type alogrithmType = {sequence: number[], result: number}
   private InputHandler(evt: React.ChangeEvent<HTMLInputElement>) {
     (new Audio(select)).play()
     this.inputValue = parseInt(evt.target.value)
+  }
+
+  cleanUp(): void {
+    this.inputValue = undefined
   }
 
   GetComponent = () => {

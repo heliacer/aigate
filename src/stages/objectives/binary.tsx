@@ -1,7 +1,7 @@
 import { ObjectiveStage } from "../../stage"
 
 (new (class extends ObjectiveStage {
-  private inputValue: string = '00000000'
+  private inputValue: string | undefined = '00000000'
   private selectedHex: string = this.generateRandomHex()
   private selectedBinary: string = this.hexToBinary(this.selectedHex)
 
@@ -21,6 +21,10 @@ import { ObjectiveStage } from "../../stage"
     } else {
       this.failStage()
     }
+  }
+
+  cleanUp(): void {
+    this.inputValue = undefined
   }
 
   GetComponent = () => {
