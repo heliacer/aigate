@@ -52,7 +52,7 @@ export default class extends Stage {
                         </>
                     )}
                 </div>
-                <button onClick={this.startGame}>Proceed</button>
+                <button onClick={this.startGame}>proceed</button>
             </>
         );
     }
