@@ -5,13 +5,13 @@ import cursor from '../../assets/vectors/cursor.svg'
     document.body.classList.toggle('cursor-none')
     return (
       <>
-        <h1 className="aquamarine">Ruleset</h1>
-        <p>
+        <h1 className={this.isMasterMode() ? "cyclamen" : "aquamarine"}>Ruleset</h1>
+        <p className={this.isMasterMode() ? "cyclamen" : ""}>
           Your mouse is no longer visible.<br/>
           A machine knows where it is.
         </p>
         <img src={cursor} alt="" />
-        <button className="aquamarine" onClick={this.triggerProceed}>proceed</button>
+        <button className= {this.isMasterMode() ? "cyclamen" : "aquamarine"} onClick={this.triggerProceed}>proceed</button>
       </>
     )
   }

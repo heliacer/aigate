@@ -42,6 +42,10 @@ export class Stage {
 
 	}
 
+	isMasterMode() {
+		return GameManager.getInstance().masterMode
+	}
+
 	cleanUp() {
 
 	}

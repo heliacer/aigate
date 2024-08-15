@@ -18,13 +18,13 @@ import mouseclick from '../../assets/vectors/mouseclick.svg'
 
     return (
       <>
-        <h1 className="aquamarine">Ruleset</h1>
-        <p>
+        <h1 className={this.isMasterMode() ? "cyclamen" : "aquamarine"}>Ruleset</h1>
+        <p className={this.isMasterMode() ? "cyclamen" : ""}>
           You are no longer allowed to right click. <br/>
           A machine does not need fancy ways.
         </p>
         <img src={mouseclick} alt="" />
-        <button className="aquamarine" onClick={this.triggerProceed}>proceed</button>
+        <button className={this.isMasterMode() ? "cyclamen" : "aquamarine"} onClick={this.triggerProceed}>proceed</button>
       </>
     )
   }

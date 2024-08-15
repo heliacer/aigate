@@ -1,7 +1,5 @@
 # Aigate
 
-🚧 In Development! Some parts might not work yet.
-
 Welcome to **Aigate** - a playful, challenging project where you must prove you're a robot to gain access! This site is designed to test your ability to think and act like a machine through a series of unconventional tasks 🦾
 
 ## Project Overview

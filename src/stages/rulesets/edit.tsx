@@ -20,13 +20,13 @@ import backspace from '../../assets/vectors/backspace.svg'
 
     return (
       <>
-        <h1 className="aquamarine">Ruleset</h1>
-        <p>
+        <h1 className={this.isMasterMode() ? "cyclamen" : "aquamarine"}>Ruleset</h1>
+        <p className={this.isMasterMode() ? "cyclamen" : ""}>
           You are no longer allowed to edit. <br/>
           A machine’s response is absolute.
         </p>
         <img src={backspace} alt="" />
-        <button className="aquamarine" onClick={this.triggerProceed}>proceed</button>
+        <button className={this.isMasterMode() ? "cyclamen" : "aquamarine"} onClick={this.triggerProceed}>proceed</button>
       </>
     )
   }

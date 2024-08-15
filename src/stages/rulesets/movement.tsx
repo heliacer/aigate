@@ -41,14 +41,14 @@ import mouse_wrong from '../../assets/vectors/mouse_wrong.svg'
 
     return (
       <>
-        <h1 className="aquamarine">Ruleset</h1>
-        <p>
+        <h1 className={this.isMasterMode() ? "cyclamen" : "aquamarine"}>Ruleset</h1>
+        <p className={this.isMasterMode() ? "cyclamen" : ""}>
           Your movements must be precise and deliberate. <br/>
           A machine’s movements are exact.
         </p>
         <img src={mouse_correct} alt="Correct movement" />
         <img src={mouse_wrong} alt="Wrong movement" />
-        <button className="aquamarine" onClick={this.triggerProceed}>Proceed</button>
+        <button className={this.isMasterMode() ? "cyclamen" : "aquamarine"} onClick={this.triggerProceed}>Proceed</button>
       </>
     )
   }

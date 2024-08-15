@@ -26,12 +26,13 @@ export class GameManager {
   public setupGame() {
     const stage = new WelcomeStage() as Stage
     this.setCurrentStageComponent(stage.GetComponent())
-    this.generateStages()
+    this.generateStages(this.masterMode)
   }
 
   public currentObjective: number = 1
   private currentStageIndex = -1
   private gameStages: Stage[] = []
+  public masterMode: boolean = false
   public timeDate: number = 0
   public timeElapsed: number = 0
   public winsCounter = 0
@@ -53,14 +54,21 @@ export class GameManager {
   }
   
   
-  public generateStages(): void{
+  public generateStages(masterMode: boolean): void{
     let objectiveStages = GameManager.allStages.filter(x => x instanceof ObjectiveStage)
     const rulesetStages = GameManager.allStages.filter(x => x instanceof RulesetStage)
-    objectiveStages = objectiveStages.sort(() => Math.random() - 0.5)
-    const [first, second] = objectiveStages.splice(-2)
-    let mixedStages = [...objectiveStages, ...rulesetStages]
-    mixedStages = mixedStages.sort(() => Math.random() - 0.5)
-    this.gameStages = [first, ...mixedStages, second]
+    if (masterMode) {
+      this.gameStages= [
+        ...rulesetStages,
+        ...objectiveStages
+      ]
+    } else{
+      objectiveStages = objectiveStages.sort(() => Math.random() - 0.5)
+      const [first, second] = objectiveStages.splice(-2)
+      let mixedStages = [...objectiveStages, ...rulesetStages]
+      mixedStages = mixedStages.sort(() => Math.random() - 0.5)
+      this.gameStages = [first, ...mixedStages, second]
+    }
   }
   
   
@@ -94,6 +102,7 @@ export class GameManager {
   public resetGame(): void {
     document.body.classList.remove('cursor-none')
     this.timeElapsed = Date.now() - this.timeDate
+    this.generateStages(this.masterMode)
     this.currentObjective = 1
     this.currentStageIndex = -1
     this.clearEventListeners()
