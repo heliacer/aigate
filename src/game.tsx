@@ -27,11 +27,6 @@ export class GameManager {
     const stage = new WelcomeStage() as Stage
     this.setCurrentStageComponent(stage.GetComponent())
     this.generateStages()
-    document.addEventListener('keydown', (event) => {
-      if (event.key === "Escape") {
-        this.getCurrentStage().triggerProceed()
-      }
-    })
   }
 
   public currentObjective: number = 1
@@ -77,10 +72,10 @@ export class GameManager {
   public passStage(): void {
     this.currentStageIndex++
     if (this.currentStageIndex === this.gameStages.length) {
-      this.winsCounter++
       (new Audio(win)).play()
       this.resetGame()
       const stage = new EndStage()
+      this.winsCounter++
       this.setCurrentStageComponent(stage.GetComponent())
       return
     }
