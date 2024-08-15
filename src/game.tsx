@@ -39,6 +39,7 @@ export class GameManager {
   private gameStages: Stage[] = []
   public timeDate: number = 0
   public timeElapsed: number = 0
+  public winsCounter = 0
   public setCurrentStageComponent: (element: JSX.Element) => void
 
   public static getInstance(setCurrentPage?: (element: JSX.Element) => void): GameManager {
@@ -76,6 +77,7 @@ export class GameManager {
   public passStage(): void {
     this.currentStageIndex++
     if (this.currentStageIndex === this.gameStages.length) {
+      this.winsCounter++
       (new Audio(win)).play()
       this.resetGame()
       const stage = new EndStage()

@@ -8,6 +8,10 @@ export class Stage {
 		GameManager.allStages.push(this)
 	}
 
+	getTotalWins() {
+		return GameManager.getInstance().winsCounter
+	}
+
 	getTimeElapsed() {
 		return GameManager.getInstance().timeElapsed
 	}

@@ -25,6 +25,7 @@ export default class extends Stage {
 
 					Welcome to the ranks of the flawless.<br/><br/>
 				</p>
+				<p className="vivid-blue">Total wins: {this.getTotalWins()}</p>
 				<div className="flex gap-8">
 					<button onClick={this.playAgain}>
 					<FontAwesomeIcon icon={faArrowRotateRight}/> play again
