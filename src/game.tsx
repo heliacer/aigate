@@ -67,6 +67,7 @@ export class GameManager {
   }
   
   public getCurrentStage(): Stage{
+    if (this.currentStageIndex === -1) return new WelcomeStage()
     return this.gameStages[this.currentStageIndex]
   }
 
