@@ -48,7 +48,7 @@ import mouse_wrong from '../../assets/vectors/mouse_wrong.svg'
         </p>
         <img src={mouse_correct} alt="Correct movement" />
         <img src={mouse_wrong} alt="Wrong movement" />
-        <button className={this.isMasterMode() ? "cyclamen" : "aquamarine"} onClick={this.triggerProceed}>Proceed</button>
+        <button className={this.isMasterMode() ? "cyclamen" : "aquamarine"} onClick={this.triggerProceed}>proceed</button>
       </>
     )
   }
