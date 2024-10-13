@@ -39,7 +39,7 @@ export default class extends Stage {
                     {totalWins > 0 && totalWins < 5 && (
                         <p className="vivid-blue">
                                                 <FontAwesomeIcon icon={faLock} className="mr-1"/>
-                                                Master mode: Locked
+                                                Master mode: Locked. Win {5 - totalWins} more times to unlock.
                                             </p>
                     )}
                     
