@@ -28,3 +28,5 @@ Want to add your own challenge or improve the existing ones? Contributions are w
 **Graplet** is a block based program creator, one of my first projects 😊
 
 Try it out: [graplet.github.io](https://graplet.github.io/editor)
+
+> *Are you a real robot? how about this: 📜 [cheat sheet](https://gist.github.com/EthosProjects/f8d5ca5f3714eb6a00e579fbae51cc30)*
